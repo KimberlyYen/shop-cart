@@ -2,12 +2,12 @@
 let itemMap = null;
 function initItemMap(){
     itemMap = {
-        "itemA":{"name":"書", "price":10, "quantity":0, "size": "100ml"},
-        "itemB":{"name":"酒", "price":20, "quantity":0, "size": "200ml"},
-        "itemC":{"name":"外套", "price":15, "quantity":0, "size": "300ml"},
-        "itemD":{"name":"便當", "price":90, "quantity":0, "size": "400ml"},
-        "itemE":{"name":"紅茶", "price":100, "quantity":0, "size": "500ml"},
-        "itemF":{"name":"車子", "price":50, "quantity":0, "size": "600ml"},
+        "itemA":{"name":"Kiwi Juice", "price":10, "quantity":0, "size": "450ml"},
+        "itemB":{"name":"Mango Juice", "price":20, "quantity":0, "size": "450ml"},
+        "itemC":{"name":"Pineapple Juice", "price":15, "quantity":0, "size": "1 Slice"},
+        "itemD":{"name":"Berry Muffins", "price":90, "quantity":0, "size": "600ml"},
+        "itemE":{"name":"Pea Soup", "price":100, "quantity":0, "size": "450ml"},
+        "itemF":{"name":"Pancake", "price":50, "quantity":0, "size": "2 Slice"},
     }
 }
 function setItemMap(inputItemMap){
