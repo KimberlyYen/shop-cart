@@ -7,51 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shop-mart</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="common.js"></script>
-    <script>
-
-        //data
-        window.onload=function(){
-          let url = new URL(location.href);
-          let data = JSON.parse(url.searchParams.get('data'));
-          setItemMap(data);
-          initData()
-        }
-
-        function initData(){
-          
-          for (const [key, value] of Object.entries(itemMap)) {
-                //沒有不顯示
-                // 
-                const quantity = parseInt(itemMap[`${key}`]["quantity"]);
-                if(quantity > 0) {
-                  // document.getElementById(`${key}`).style.display="block";
-
-                  const quantityId = `${key}` + "-quantity";
-                  const priceId = `${key}` + "-price";
-                  const nameId = `${key}` + "-name";
-                  const sizeId = `${key}` + "-size";
-
-                  document.getElementById(nameId).innerHTML = itemMap[`${key}`]["name"];
-                  document.getElementById(quantityId).innerHTML = itemMap[`${key}`]["quantity"];
-                  document.getElementById(priceId).innerHTML = itemMap[`${key}`]["price"];
-                  document.getElementById(sizeId).innerHTML = itemMap[`${key}`]["size"];
-                  
-                }else{
-                  document.getElementById(`${key}`).style.display="none";
-                }
-            }
-            document.getElementById("nextTrue").style.display="none";
-            document.getElementById("nextFalse").style.display="block";
-
-            calculateTotal("confirm");
-        }
-
-        function confirm(){
-            alert("checkout complete!!")
-        }
-
-    </script>
+    <script src="common.js?v=1"></script>
+    <script src="order.js?v=1"></script>
 </head>
 
 <body>
@@ -237,9 +194,6 @@
         <button id="nextTrue" class="bg-[#C2D100] text-white text-2xl w-full h-16 rounded-full my-4" onclick="confirm()">Check Out Now</button>
         <button id="nextFalse" class="bg-[#CCCCCC] text-white text-2xl w-full h-16 rounded-full my-4">Check Out Now</button>
     </footer>
-
-
-    <script src="./index.js"></script>
 </body>
 
 </html>

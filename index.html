@@ -7,39 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shop-mart / product</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="common.js"></script>
-    <script>
-
-        window.onload=function(){
-            //init
-            initItemMap();
-            initData();
-        }
-
-        function initData(){
-            for (const [key, value] of Object.entries(itemMap)) {
-                const nameId = `${key}` + "-name";
-                const quantityId = `${key}` + "-quantity";
-                const priceId = `${key}` + "-price";
-                const sizeId = `${key}` + "-size";
-
-                document.getElementById(nameId).innerHTML = itemMap[`${key}`]["name"];
-                document.getElementById(quantityId).innerHTML = itemMap[`${key}`]["quantity"];
-                document.getElementById(priceId).innerHTML = itemMap[`${key}`]["price"];
-                document.getElementById(sizeId).innerHTML = itemMap[`${key}`]["size"];
-            }
-            document.getElementById("nextTrue").style.display="none";
-            document.getElementById("nextFalse").style.display="block";
-            document.getElementById("totalNumber").innerHTML = 0;
-            
-        }
-
-        function confirm(){
-            let finalPriceMapJson = JSON.stringify(itemMap)
-            window.location.href = "order.html?data=" + finalPriceMapJson;
-        }
-
-    </script>
+    <script src="common.js?v=1"></script>
+    <script src="index.js?v=1"></script>
 </head>
 
 <body>
@@ -191,7 +160,7 @@
         <hr class="my-4">
     </div>
     <footer class="bg-white p-4">
-        <div class="text-xl ">
+        <div class="text-xl">
             <div>
                 You have selected
                 <span id="totalNumber" class="text-[#008A8A]">0</span>
@@ -200,7 +169,7 @@
         </div>
         <a href="#">
             <button id="nextTrue" class="bg-[#C2D100] text-white text-2xl w-full h-16 rounded-full my-4"
-            onclick="confirm()">
+            onclick="confirm()" style="display:none">
                 Next
             </button>
             <button id="nextFalse" class="bg-[#CCCCCC] text-white text-2xl w-full h-16 rounded-full my-4"
