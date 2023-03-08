@@ -7,11 +7,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shop-mart / product</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="common.js"></script>
+    <script>
+
+        window.onload=function(){
+            //init
+            initItemMap();
+            initData();
+        }
+
+        function initData(){
+            for (const [key, value] of Object.entries(itemMap)) {
+                const nameId = `${key}` + "-name";
+                const quantityId = `${key}` + "-quantity";
+                const priceId = `${key}` + "-price";
+                const sizeId = `${key}` + "-size";
+
+                document.getElementById(nameId).innerHTML = itemMap[`${key}`]["name"];
+                document.getElementById(quantityId).innerHTML = itemMap[`${key}`]["quantity"];
+                document.getElementById(priceId).innerHTML = itemMap[`${key}`]["price"];
+                document.getElementById(sizeId).innerHTML = itemMap[`${key}`]["size"];
+            }
+            document.getElementById("nextTrue").style.display="none";
+            document.getElementById("nextFalse").style.display="block";
+            document.getElementById("totalNumber").innerHTML = 0;
+            
+        }
+
+        function confirm(){
+            let finalPriceMapJson = JSON.stringify(itemMap)
+            window.location.href = "order.html?data=" + finalPriceMapJson;
+        }
+
+    </script>
 </head>
 
 <body>
     <div class="container mx-auto px-4 flex flex-col">
-
         <nav>
             <a href="#">
                 <h1 class="text-2xl font-bold mt-2" onclick="location.href='./index.html';">
@@ -19,141 +51,164 @@
                 </h1>
             </a>
         </nav>
-
         <hr class="my-4">
-
         <div class="title">
-
-
             <h2 class="text-4xl font-bold">Product list</h2>
             <h3 class="text-[#888888]">
                 Table 01
             </h3>
         </div>
-
         <div class="Item">
             <div class="overflow-auto flex flex-wrap grid grid-cols-2">
-
+                <!-- 產品A -->
                 <div class="box py-2 h-64 flex flex-col items-center ">
                     <div class="picture ">
                         <div class="bg-indigo-200 h-40 w-40 rounded-xl"></div>
                     </div>
-
-                    <div class="text my-2">
-                        <div class="food-name text-xl font-bold">Orange Juice</div>
+                    <div class="text my-2 flex flex-row">
+                        <div id="itemA-name" class="food-name text-xl font-bold">Orange Juice</div>
+                        &nbsp;&nbsp;
+                        <div id="itemA-size" class="food-name text-xl font-bold"></div>
+                        &nbsp;&nbsp;
+                        <div class="price text-[#ACB900]">
+                            $
+                            <span id="itemA-price" class="underline text-2xl">10</span>
+                        </div>
                     </div>
-
-                    <div class="count my-2">
-                        <button id="add" class="button text-lg bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg">+</button>
+                    <div class="count my-2 grid grid-cols-3">
+                        <button id="itemA-add" class="button bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg" onclick="calculateFunction('itemA','delete','index')">-</button>
+                        <div id="itemA-quantity" class="text-center">0</div>
+                        <button id="itemA-delete" class="button bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg" onclick="calculateFunction('itemA','add','index')">+</button>
                     </div>
-
                 </div>
-
+                <!-- 產品B -->
                 <div class="box py-2 h-64 flex flex-col items-center ">
                     <div class="picture ">
                         <div class="bg-indigo-200 h-40 w-40 rounded-xl"></div>
                     </div>
-
-                    <div class="text my-2">
-                        <div class="food-name text-xl font-bold">Orange Juice</div>
+                    <div class="text my-2 flex flex-row">
+                        <div id="itemB-name" class="food-name text-xl font-bold">Orange Juice</div>
+                        &nbsp;&nbsp;
+                        <div id="itemB-size" class="food-name text-xl font-bold"></div>
+                        &nbsp;&nbsp;
+                        <div class="price text-[#ACB900]">
+                            $
+                            <span id="itemB-price" class="underline text-2xl">10</span>
+                        </div>
                     </div>
-
-                    <div class="count my-2">
-                        <button id="add" class="button text-lg bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg">+</button>
+                    <div class="count my-2 grid grid-cols-3">
+                        <button id="itemB-add" class="button bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg" onclick="calculateFunction('itemB','delete','index')">-</button>
+                        <div id="itemB-quantity" class="text-center">0</div>
+                        <button id="itemB-delete" class="button bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg" onclick="calculateFunction('itemB','add','index')">+</button>
                     </div>
-
                 </div>
-
+                <!-- 產品C -->
                 <div class="box py-2 h-64 flex flex-col items-center ">
                     <div class="picture ">
                         <div class="bg-indigo-200 h-40 w-40 rounded-xl"></div>
                     </div>
-
-                    <div class="text my-2">
-                        <div class="food-name text-xl font-bold">Orange Juice</div>
+                    <div class="text my-2 flex flex-row">
+                        <div id="itemC-name" class="food-name text-xl font-bold">Orange Juice</div>
+                        &nbsp;&nbsp;
+                        <div id="itemC-size" class="food-name text-xl font-bold"></div>
+                        &nbsp;&nbsp;
+                        <div class="price text-[#ACB900]">
+                            $
+                            <span id="itemC-price" class="underline text-2xl">10</span>
+                        </div>
                     </div>
-
-                    <div class="count my-2">
-                        <button id="add" class="button text-lg bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg">+</button>
+                    <div class="count my-2 grid grid-cols-3">
+                        <button id="itemC-add" class="button bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg" onclick="calculateFunction('itemC','delete','index')">-</button>
+                        <div id="itemC-quantity" class="text-center">0</div>
+                        <button id="itemC-delete" class="button bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg" onclick="calculateFunction('itemC','add','index')">+</button>
                     </div>
-
                 </div>
-
+                <!-- 產品D -->
                 <div class="box py-2 h-64 flex flex-col items-center ">
                     <div class="picture ">
                         <div class="bg-indigo-200 h-40 w-40 rounded-xl"></div>
                     </div>
-
-                    <div class="text my-2">
-                        <div class="food-name text-xl font-bold">Orange Juice</div>
+                    <div class="text my-2 flex flex-row">
+                        <div id="itemD-name" class="food-name text-xl font-bold">Orange Juice</div>
+                        &nbsp;&nbsp;
+                        <div id="itemD-size" class="food-name text-xl font-bold"></div>
+                        &nbsp;&nbsp;
+                        <div class="price text-[#ACB900]">
+                            $
+                            <span id="itemD-price" class="underline text-2xl">10</span>
+                        </div>
                     </div>
-
-                    <div class="count my-2">
-                        <button id="add" class="button text-lg bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg">+</button>
+                    <div class="count my-2 grid grid-cols-3">
+                        <button id="itemD-add" class="button bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg" onclick="calculateFunction('itemD','delete','index')">-</button>
+                        <div id="itemD-quantity" class="text-center">0</div>
+                        <button id="itemD-delete" class="button bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg" onclick="calculateFunction('itemD','add','index')">+</button>
                     </div>
-
                 </div>
-
+                <!-- 產品E -->
                 <div class="box py-2 h-64 flex flex-col items-center ">
                     <div class="picture ">
                         <div class="bg-indigo-200 h-40 w-40 rounded-xl"></div>
                     </div>
-
-                    <div class="text my-2">
-                        <div class="food-name text-xl font-bold">Orange Juice</div>
+                    <div class="text my-2 flex flex-row">
+                        <div id="itemE-name" class="food-name text-xl font-bold">Orange Juice</div>
+                        &nbsp;&nbsp;
+                        <div id="itemE-size" class="food-name text-xl font-bold"></div>
+                        &nbsp;&nbsp;
+                        <div class="price text-[#ACB900]">
+                            $
+                            <span id="itemE-price" class="underline text-2xl">10</span>
+                        </div>
                     </div>
-
-                    <div class="count my-2">
-                        <button id="add" class="button text-lg bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg">+</button>
+                    <div class="count my-2 grid grid-cols-3">
+                        <button id="itemE-add" class="button bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg" onclick="calculateFunction('itemE','delete','index')">-</button>
+                        <div id="itemE-quantity" class="text-center">0</div>
+                        <button id="itemE-delete" class="button bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg" onclick="calculateFunction('itemE','add','index')">+</button>
                     </div>
-
                 </div>
-
+                <!-- 產品F -->
                 <div class="box py-2 h-64 flex flex-col items-center ">
                     <div class="picture ">
                         <div class="bg-indigo-200 h-40 w-40 rounded-xl"></div>
                     </div>
-
-                    <div class="text my-2">
-                        <div class="food-name text-xl font-bold">Orange Juice</div>
+                    <div class="text my-2 flex flex-row">
+                        <div id="itemF-name" class="food-name text-xl font-bold">Orange Juice</div>
+                        &nbsp;&nbsp;
+                        <div id="itemF-size" class="food-name text-xl font-bold"></div>
+                        &nbsp;&nbsp;
+                        <div class="price text-[#ACB900]">
+                            $
+                            <span id="itemF-price" class="underline text-2xl">10</span>
+                        </div>
                     </div>
-
-                    <div class="count my-2">
-                        <button id="add" class="button text-lg bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg">+</button>
+                    <div class="count my-2 grid grid-cols-3">
+                        <button id="itemF-add" class="button bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg" onclick="calculateFunction('itemF','delete','index')">-</button>
+                        <div id="itemF-quantity" class="text-center">0</div>
+                        <button id="itemF-delete" class="button bg-[#C2D100] w-[1.8rem] h-[1.8rem] rounded-lg" onclick="calculateFunction('itemF','add','index')">+</button>
                     </div>
-
                 </div>
-
-
-
             </div>
-
-
         </div>
-
         <hr class="my-4">
-
-
     </div>
-
     <footer class="bg-white p-4">
         <div class="text-xl ">
             <div>
                 You have selected
-                <span class="text-[#008A8A]">0</span>
+                <span id="totalNumber" class="text-[#008A8A]">0</span>
                 item
             </div>
         </div>
         <a href="#">
-            <button class="bg-[#CCCCCC] text-white text-2xl w-full h-16 rounded-full my-4"
-                onclick="location.href='./order.html';">
+            <button id="nextTrue" class="bg-[#C2D100] text-white text-2xl w-full h-16 rounded-full my-4"
+            onclick="confirm()">
+                Next
+            </button>
+            <button id="nextFalse" class="bg-[#CCCCCC] text-white text-2xl w-full h-16 rounded-full my-4"
+            >
                 Next
             </button>
         </a>
     </footer>
-
-
-    <script src="./index.js"></script>
 </body>
 
 </html>
