@@ -46,21 +46,22 @@ function calculateFunction (id, type, page){
 }
 
 function calculateTotal (page) {
-    if("index" == page ){
-        let totalNumber = 0;
-        for (const [key, value] of Object.entries(itemMap)) {
-            const quantity = parseInt(itemMap[`${key}`]["quantity"]);
-            totalNumber = totalNumber + quantity
-        }
-        if(totalNumber > 0){
-            document.getElementById("nextTrue").style.display="block";
-            document.getElementById("nextFalse").style.display="none";
-        }else{
-            document.getElementById("nextTrue").style.display="none";
-            document.getElementById("nextFalse").style.display="block";
-        }
-        document.getElementById("totalNumber").innerHTML = totalNumber; 
+    // if("index" == page ){
+    let totalNumber = 0;
+    for (const [key, value] of Object.entries(itemMap)) {
+        const quantity = parseInt(itemMap[`${key}`]["quantity"]);
+        totalNumber = totalNumber + quantity
     }
+    if(totalNumber > 0){
+        document.getElementById("nextTrue").style.display="block";
+        document.getElementById("nextFalse").style.display="none";
+    }else{
+        document.getElementById("nextTrue").style.display="none";
+        document.getElementById("nextFalse").style.display="block";
+    }
+    document.getElementById("totalNumber").innerHTML = totalNumber; 
+    
+    // }
     if("confirm" == page ){
         let total = 0;
         for (const [key, value] of Object.entries(itemMap)) {
