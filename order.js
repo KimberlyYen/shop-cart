@@ -36,5 +36,5 @@ window.onload=function(){
   }
 
   function confirm(){
-      alert("checkout complete!!")
+      alert("🎉 Order complete! 🎉 ")
   }
