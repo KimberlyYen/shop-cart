@@ -10,10 +10,10 @@ function initItemMap(){
     itemMap = {
         "itemA":{"name":"Kiwi Juice", "price":10, "quantity":0, "size": "450ml"},
         "itemB":{"name":"Mango Juice", "price":20, "quantity":0, "size": "450ml"},
-        "itemC":{"name":"Pineapple Juice", "price":15, "quantity":0, "size": "1 Slice"},
-        "itemD":{"name":"Berry Muffins", "price":90, "quantity":0, "size": "600ml"},
-        "itemE":{"name":"Pea Soup", "price":100, "quantity":0, "size": "450ml"},
-        "itemF":{"name":"Pancake", "price":50, "quantity":0, "size": "2 Slice"},
+        "itemC":{"name":"Pineapple Juice", "price":15, "quantity":0, "size": "450ml"},
+        "itemD":{"name":"Berry Muffins", "price":90, "quantity":0, "size": "2 Slice "},
+        "itemE":{"name":"Pea Soup", "price":100, "quantity":0, "size": "600ml"},
+        "itemF":{"name":"Pancake", "price":50, "quantity":0, "size": "1 Slice"},
     }
 }
 function setItemMap(inputItemMap){
